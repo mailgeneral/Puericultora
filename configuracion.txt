@@ -1,0 +1,114 @@
+-- GUÍA DE CONFIGURACIÓN Y MANTENIMIENTO: "JUANA DOE. PUERICULTORA" --
+-- Versión 1.3
+-- Manual de operaciones para el Webmaster.
+
+Este documento es tu centro de mando. Te permitirá controlar el 99% del contenido de la tienda sin tocar una sola línea de código de programación.
+
+-------------------------------------------
+1. MANEJO DE IMÁGENES
+-------------------------------------------
+
+Todas las imágenes de los productos, la comunidad, etc., se cargan desde una URL. NO se guardan en el proyecto.
+
+**Proceso recomendado:**
+1.  **Elige un servicio de alojamiento de imágenes:**
+    *   **Imgur (Recomendado por fácil y gratis):** Vas a imgur.com, subes tu imagen. Una vez subida, haz clic derecho sobre ella y selecciona "Copiar dirección de la imagen". Esa es la URL que necesitas.
+    *   **Cloudinary (Más profesional):** Ofrece un plan gratuito generoso.
+    *   **Cualquier otro servicio** que te dé un enlace directo a la imagen (que termine en .jpg, .png, .webp, etc.).
+
+2.  **Usa la URL:** Una vez que tienes la URL de la imagen, la pegas en el campo correspondiente del archivo `products.json` (ver sección siguiente).
+
+-------------------------------------------
+2. EL CORAZÓN DE LA TIENDA: EL ARCHIVO 'products.json'
+-------------------------------------------
+
+Este archivo es el cerebro de toda la tienda. Controla qué productos se muestran, sus precios, sus ofertas y qué hacen los botones de compra. Debes editarlo con extremo cuidado.
+
+**Regla de Oro:** La estructura es un listado (`[ ... ]`) de objetos (`{ ... }`), separados por comas. El último objeto NO lleva coma al final. Cada texto debe ir entre comillas dobles `"`
+
+**Estructura de un producto:**
+```json
+{
+  "id": NUMERO_UNICO,
+  "name": "TEXTO_DEL_NOMBRE",
+  "description": "TEXTO_DE_LA_DESCRIPCION",
+  "price": PRECIO_NORMAL_SIN_COMILLAS,
+  "imageUrl": "URL_DE_LA_IMAGEN",
+  "advantages": [
+    "Ventaja 1",
+    "Ventaja 2"
+  ],
+  "category": "TEXTO_DE_LA_CATEGORIA",
+  "isBestseller": true_o_false,
+  "isFavorite": true_o_false,
+  "offer": { ... OBJETO_DE_OFERTA ... },
+  "buyAction": { ... OBJETO_DE_ACCION ... }
+}
+```
+
+**Desglose de cada campo:**
+
+*   `"id"`: Un número único para cada producto. No lo repitas.
+*   `"name"`: El nombre del producto. Aparecerá en grande.
+*   `"description"`: El texto descriptivo del producto.
+*   `"price"`: **MUY IMPORTANTE.** El precio normal del producto. Es un número, no lleva comillas. Usa punto `.` para los decimales.
+*   `"imageUrl"`: La URL de la imagen que obtuviste en el paso 1.
+*   `"advantages"`: Una lista de ventajas. Cada ventaja es un texto entre comillas, separado por comas. Puedes poner tantas como quieras.
+*   `"category"`: (Opcional) **¡NUEVO!** El sistema de organización. Escribe el nombre de la categoría a la que pertenece el producto (Ej: "Alimentación", "Porteo y Paseo").
+    *   **AUTOMÁTICO:** El sistema detectará todas las categorías que uses y creará un botón de filtro para cada una.
+    *   **FALLBACK:** Si omites esta línea o la dejas en blanco, el producto se asignará automáticamente a una categoría "General".
+*   `"isBestseller"`: (Opcional) Control Táctico de la Percepción. Si pones `true`, este producto aparecerá en el carrusel superior de "Los Preferidos de la Comunidad" y tendrá una insignia de "Más Vendido". Úsalo para los productos que quieres destacar y generar prueba social.
+*   `"isFavorite"`: (Opcional) Si pones `true`, aparecerá la insignia "Recomendado ★". Si pones `false` o eliminas esta línea, no aparecerá.
+*   `"offer"`: (Opcional) **LA CLAVE DE LAS OFERTAS.** Si un producto NO tiene oferta, simplemente elimina toda la sección `"offer": { ... }`. Si SÍ tiene oferta, la estructura es:
+    ```json
+    "offer": {
+      "offerPrice": PRECIO_DE_OFERTA_SIN_COMILLAS,
+      "offerText": "TEXTO_DE_LA_INSIGNIA_DE_OFERTA"
+    }
+    ```
+    *   `"offerPrice"`: El nuevo precio rebajado. El precio original (`price`) se mostrará tachado automáticamente.
+    *   `"offerText"`: El texto que aparece en la insignia roja (Ej: "¡Oferta Especial!", "Liquidación", "15% OFF").
+
+*   `"buyAction"`: **EL CONTROL DE LOS BOTONES.** Esto define qué pasa cuando alguien hace clic en "LO QUIERO! ❤️".
+    *   **Opción 1: Enviar a WhatsApp (Recomendado):**
+        ```json
+        "buyAction": {
+          "type": "whatsapp",
+          "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+        }
+        ```
+        *   `"type": "whatsapp"`: Obligatorio para esta acción.
+        *   `"message"`: **LA PLANTILLA DE PODER.** Escribe el mensaje que quieras, y usa el marcador de posición `{PRODUCT_NAME}` donde quieras que aparezca el nombre del producto.
+        *   **Ventaja Táctica:** Esto es una mejora MÁGICA. Significa que si cambias el nombre del producto, el mensaje de WhatsApp se actualizará automáticamente. No tienes que editarlo en dos lugares, eliminando errores.
+
+    *   **Opción 2: Mostrar una Alerta Simple:**
+        ```json
+        "buyAction": {
+          "type": "alert",
+          "message": "¡Producto añadido a tu canasta de compra!"
+        }
+        ```
+        *   `"type": "alert"`: Obligatorio para esta acción.
+        *   `"message"`: El texto que aparecerá en la ventana de alerta.
+
+-------------------------------------------
+3. NÚMEROS DE CONTACTO (TELÉFONO Y WHATSAPP)
+-------------------------------------------
+
+Estos números están FIJOS en el código porque son generales, no por producto.
+
+**Para cambiarlos, debes editar DOS archivos:**
+
+1.  **`index.html`**: Busca la sección `<div class="contact-actions">`. Verás dos enlaces `<a>` que empiezan con `href="tel:..."` y `href="https://wa.me/..."`. Cambia el número de teléfono en ambos. El de WhatsApp debe incluir el código de país (Ej: 52 para México) sin el `+`.
+
+2.  **`index.tsx`**: Cerca de la línea 140, busca la constante `const whatsappNumber = "521234567890";`. Debes cambiar este número. Este es el que usan los botones de "LO QUIERO" y "Preguntar sobre este producto" para funcionar.
+
+-------------------------------------------
+4. NOTAS FINALES Y ADVERTENCIAS
+-------------------------------------------
+
+*   **Sintaxis es Rey:** Un solo error en el `products.json` (una coma de más o de menos, una comilla olvidada) puede hacer que NINGÚN producto se cargue.
+*   **Validador de JSON:** Antes de subir tus cambios, puedes copiar y pegar todo el contenido de tu `products.json` en una web como "jsonlint.com" para verificar que no tenga errores.
+*   **Caché del Navegador:** Si haces un cambio y no lo ves, prueba a refrescar la página forzadamente (Ctrl + Shift + R en Chrome, o Cmd + Shift + R en Mac).
+
+Esta guía es tu espada. Úsala con sabiduría.

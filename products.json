@@ -1,0 +1,133 @@
+
+[
+  {
+    "id": 1,
+    "name": "Kit de Biberones Anti-cólicos",
+    "description": "Set de 3 biberones diseñados para reducir los cólicos, gases y reflujo. Flujo natural y fácil limpieza para la tranquilidad de los padres.",
+    "price": 899.99,
+    "imageUrl": "https://images.pexels.com/photos/3995913/pexels-photo-3995913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Sistema de ventilación AirFree",
+      "Tetina similar al pecho",
+      "Libre de BPA"
+    ],
+    "isBestseller": true,
+    "category": "Alimentación",
+    "offer": {
+      "offerPrice": 749.99,
+      "offerText": "¡Oferta Especial!"
+    },
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  },
+  {
+    "id": 2,
+    "name": "Fular Portabebés Ergonómico",
+    "description": "Lleva a tu bebé cerca de ti con total comodidad y seguridad. Tejido de algodón suave y transpirable que se ajusta perfectamente a ambos.",
+    "price": 1250.00,
+    "imageUrl": "https://images.pexels.com/photos/789596/pexels-photo-789596.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Fomenta el apego seguro",
+      "Distribución de peso ideal",
+      "Algodón 100% orgánico"
+    ],
+    "isBestseller": true,
+    "isFavorite": true,
+    "category": "Porteo y Paseo",
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  },
+  {
+    "id": 3,
+    "name": "Set de Mordillos de Silicona",
+    "description": "Alivia las molestias de la dentición con este set de mordillos de silicona de grado alimenticio. Diseños divertidos y texturas que masajean las encías.",
+    "price": 450.50,
+    "imageUrl": "https://images.pexels.com/photos/1456951/pexels-photo-1456951.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Silicona de grado alimenticio",
+      "Fácil de agarrar para el bebé",
+      "Apto para refrigerador"
+    ],
+    "category": "Cuidado y Juego",
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  },
+  {
+    "id": 4,
+    "name": "Silla de Comer Evolutiva 3 en 1",
+    "description": "Una silla que crece con tu hijo. Se adapta desde los 6 meses hasta los 5 años, convirtiéndose en silla de juegos. Máxima seguridad y diseño moderno.",
+    "price": 2800.00,
+    "imageUrl": "https://images.pexels.com/photos/11387637/pexels-photo-11387637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Ajustable en altura",
+      "Bandeja extraíble y lavable",
+      "Arnés de 5 puntos"
+    ],
+    "isFavorite": true,
+    "category": "Alimentación",
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  },
+  {
+    "id": 5,
+    "name": "Gimnasio de Actividades Sensorial",
+    "description": "Estimula el desarrollo de tu bebé con este gimnasio interactivo. Incluye sonajeros, texturas y un espejo seguro para fomentar la curiosidad.",
+    "price": 1500.00,
+    "imageUrl": "https://images.pexels.com/photos/1620672/pexels-photo-1620672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Fomenta la motricidad",
+      "Materiales no tóxicos",
+      "Fácil de montar y guardar"
+    ],
+    "category": "Cuidado y Juego",
+    "offer": {
+      "offerPrice": 1299.00,
+      "offerText": "¡Imperdible!"
+    },
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  },
+  {
+    "id": 6,
+    "name": "Cochecito Compacto de Viaje",
+    "description": "El compañero ideal para las aventuras en familia. Plegado ultra compacto con una sola mano, ligero y aprobado como equipaje de mano en aviones.",
+    "price": 4500.00,
+    "imageUrl": "https://images.pexels.com/photos/3933013/pexels-photo-3933013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Pesa solo 6.7 kg",
+      "Capota extensible con filtro UV",
+      "Maniobrabilidad superior"
+    ],
+    "category": "Porteo y Paseo",
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  },
+  {
+    "id": 7,
+    "name": "Pañales de Tela Reutilizables (Kit)",
+    "description": "Una opción ecológica y suave para la piel de tu bebé. Este kit de inicio incluye 5 pañales ajustables y 10 insertos de bambú absorbentes.",
+    "price": 1850.00,
+    "imageUrl": "https://images.pexels.com/photos/6539063/pexels-photo-6539063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantages": [
+      "Ecológico y económico a largo plazo",
+      "Ajustables a varias etapas",
+      "Previenen rozaduras"
+    ],
+    "buyAction": {
+      "type": "whatsapp",
+      "message": "¡Hola, Juana! Quiero comprar el producto: {PRODUCT_NAME}."
+    }
+  }
+]
